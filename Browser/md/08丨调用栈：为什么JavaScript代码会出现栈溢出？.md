@@ -1,5 +1,5 @@
 # 08 | 调用栈：为什么JavaScript代码会出现栈溢出？
-
+![20200620202619](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202619.png)
 **执行和编译的三种情况**
 
 1. 当 JavaScript 执行全局代码的时候，会编译全局代码并创建全局执行上下文，而且在整个页面的生存周期内，全局执行上下文只有一份。
@@ -8,7 +8,7 @@
 
 栈溢出情况如下图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172355c9871c4170-20200525154331759.png)
+![20200620202604](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202604.png)
 <center>栈溢出的错误
 </center>
 
@@ -27,7 +27,7 @@ add()
 
 在执行add之前，JavaScript引擎会为上面这个代码创建全局执行上下文。如图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17235631e721c89d.png)
+![20200620202630](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202630.png)
 <center>全局执行上下文</center>
 
 - 首先，从全局执行上下文中，取出 add 函数代码。
@@ -36,7 +36,7 @@ add()
 
 **执行完整的流程图如下**
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17235681d1403bb7.jpeg)
+![20200620202715](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202715.png)
 <center>函数调用过程</center>
 
 当执行到add函数时候，我们就有了两个执行上下文。
@@ -50,7 +50,7 @@ add()
 ## 什么是栈
 相信大家看了下面到图就知道什么是栈，什么是入栈，什么是出栈来，在这额外说一下，栈是一种数据结构。如图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172356d7aebf4391.png)
+![20200620202726](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202726.png)
 <center>栈示意图</center>
 
 ## 什么是 JavaScript 的调用栈
@@ -74,7 +74,7 @@ addAll(3,6)
 
 1. **第一步，创建全局上下文，并将其压入栈底**。如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723575f6f174406-20200525154623371.png)
+![20200620202738](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202738.png)
 <center>全局执行上下文压栈</center>
 
 从图中你也可以看出，变量 a、函数 add 和 addAll 都保存到了全局上下文的变量环境对象中。
@@ -86,28 +86,27 @@ addAll(3,6)
 ![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723579749213828.png)
 <center>赋值操作改变执行上下文中的值</center>
 
-2. **第二步是调用 addAll 函数**。当调用该函数时，JavaScript 引擎会编译该函数，并为其创建一个执行上下文，最后还将该函数的执行上下文压入栈中，如下图所示：
-
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172357c71a676b8a.png)
+1. **第二步是调用 addAll 函数**。当调用该函数时，JavaScript 引擎会编译该函数，并为其创建一个执行上下文，最后还将该函数的执行上下文压入栈中，如下图所示：
+![20200620202747](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202747.png)
 <center>执行 addAll 函数时的调用栈</center>
 
 addAll 函数的执行上下文创建好之后，便进入了函数代码的执行阶段了，这里先执行的是 d=10 的赋值操作，执行语句会将 addAll 函数执行上下文中的 d 由 undefined 变成了 10。
 
 3.**第三步，当执行到 add 函数调用语句时，同样会为其创建执行上下文**，并将其压入调用栈，如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172357f95dae3b9e.png)
+![20200620202800](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202800.png)
 <center>执行 add 函数时的调用栈
 </center>
 
 当 add 函数返回时，该函数的执行上下文就会从栈顶弹出，并将 result 的值设置为 add 函数的返回值，也就是 9。如下图所示：
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723580c0dd24f72-20200525154832874.png)
+![20200620202806](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202806.png)
 <center>add 函数执行结束时的调用栈</center>
 
 addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也会从栈顶部弹出，此时调用栈中就只剩下全局上下文了。最终如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17235817e284d3d9.png)
+![20200620202813](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202813.png)
 <center>addAll 函数执行结束时的调用栈</center>
 
 **整个 JavaScript 流程执行结束了。调用栈是 JavaScript 引擎追踪函数执行的一个机制，当一次有多个函数被调用时，通过调用栈就能够追踪到哪个函数正在被执行以及各函数之间的调用关系。**
@@ -119,7 +118,7 @@ addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也
 - 你调bug的时候会用断点。查看的函数中加入断点，然后当执行到该函数时，就可以查看该函数的调用栈了。
 - 打开“开发者工具”，点击“Source”标签，选择 JavaScript 代码的页面，然后在第 3 行加上断点，并刷新页面。你可以看到执行到 add 函数时，执行流程就暂停了，这时可以通过右边“call stack”来查看当前的调用栈的情况，如下图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723587b8bdc12f3.png)
+![20200620202820](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202820.png)
 <center>查看函数调用关系
 </center>
 
@@ -128,7 +127,7 @@ addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也
 *除了断点，还可以调用函数来查看。*
 - 使用 console.trace() 来输出当前的函数调用关系，比如在示例代码中的 add 函数里面加上了 console.trace()，你就可以看到控制台输出的结果，如下图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172358979d2ae397.png)
+![20200620202827](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202827.png)
 <center>使用 trace 函数输出当前调用栈信息
 </center>
 
@@ -145,7 +144,7 @@ console.log(division(1,2))
 
 这段代码会出现栈溢出错误,如图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172358bb4570c6ff-20200525155054306.png)
+![20200620202843](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202843.png)
 <center>栈溢出错误
 </center>
 

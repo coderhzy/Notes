@@ -1,5 +1,5 @@
 # 10丨作用域链和闭包：代码中出现相同的变量，JavaScript引擎是如何选择的？
-
+![20200620203158](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203158.png)
 **我们这篇文章来了解下什么是作用域链，什么是闭包？**
 
 让我们来看段代码：
@@ -17,7 +17,7 @@ foo() // 极客时间
 
 来看下调用栈图：
 
-![ ](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723edf04ec79e95.png)
+![20200620203206](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203206.png)
 <center>执行 bar 函数时的调用栈
 </center>
 
@@ -27,12 +27,8 @@ foo() // 极客时间
 
 每个执行上下文的变量环境中，都包含了一个外部引用，用来指向外部的执行上下文，我们把这个外部引用称为**outer**。
 
-<<<<<<< HEAD
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723eeee3c1d6171.png)
-=======
-![](https://user-gold-cdn.xitu.io/2020/5/23/1723eeee3c1d6171?w=1294&h=1026&f=png&s=315039)
->>>>>>> f1a09726e51600b3f8fd477f4abc7274bf70379c
+![20200620203222](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203222.png)
 <center>带有外部引用的调用栈示意图
 </center>
 
@@ -46,7 +42,7 @@ foo() // 极客时间
 
 咱们来看图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723ef1c8665d5fd.png)
+![20200620203230](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203230.png)
 <center>词法作用域
 </center>
 
@@ -85,7 +81,7 @@ foo()
 ```
 我们来回顾一下，let 或者 const 声明的变量，那么变量就会存放到该函数的词法环境中。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723efc0f8356100.png)
+![20200620203242](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203242.png)
 <center>块级作用域中是如何查找变量的
 </center>
 
@@ -118,7 +114,7 @@ console.log(bar.getName())
 ```
 我们来看下上段代码的调用栈：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723f08630d609b3.png)
+![20200620203252](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203252.png)
 <center>执行到 return bar 时候的调用栈
 </center>
 
@@ -126,7 +122,7 @@ console.log(bar.getName())
 ***
 当foo函数执行完成以后：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723f12a9e9e0238-20200525155508774.png)
+![20200620203259](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203259.png)
 <center>闭包的产生过程
 </center>
 
@@ -137,7 +133,7 @@ console.log(bar.getName())
 **在 JavaScript 中，根据词法作用域的规则，内部函数总是可以访问其外部函数中声明的变量，当通过调用一个外部函数返回一个内部函数后，即使该外部函数已经执行结束了，但是内部函数引用外部函数的变量依然保存在内存中，我们就把这些变量的集合称为闭包。比如外部函数是 foo，那么这些变量的集合就称为 foo 函数的闭包。**
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723f14f65e68dc6-20200525155737645.png)
+![20200620203306](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203306.png)
 <center>执行 bar 时调用栈状态
 </center>
 
@@ -147,7 +143,7 @@ console.log(bar.getName())
 
 通过“开发者工具”来看看闭包的情况，打开 Chrome 的“开发者工具”，在 bar 函数任意地方打上断点，然后刷新页面，可以看到如下内容：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723f15ee44749f8-20200525155751674.png)
+![20200620203313](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203313.png)
 <center>开发者工具中的闭包展示
 </center>
 

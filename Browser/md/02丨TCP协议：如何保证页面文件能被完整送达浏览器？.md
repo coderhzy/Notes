@@ -1,5 +1,5 @@
 ## TCP协议:怎样完整的送达界面给浏览器
-
+![20200620200610](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200610.png)
 衡量Web界面性能的指标“FP（First Paint）”，指的是从界面加载到首次开始绘制的时长。影响这一指标的因素为网络加载速度。
 
 ### 数据包传送
@@ -15,7 +15,7 @@ IP 头是 IP 数据包开头的信息，包含 IP 版本、源 IP 地址、目�
 
 我们先把网络简单分成三层结构：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172192e4c7bcc27c.png)
+![20200620200628](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200628.png)
 <center>简化的 IP 网络三层传输模型</center>
 
 下面的我们来介绍下具体步骤：
@@ -26,13 +26,13 @@ IP 头是 IP 数据包开头的信息，包含 IP 版本、源 IP 地址、目�
 - 数据包被传输到主机 B 的网络层，在这里主机 B 拆开数据包的 IP 头信息，并将拆开来的数据部分交给上层；
 - 最终，含有“极客时间”信息的数据包就到达了主机 B 的上层了。
 
-2. **UDP：将数据包传送到应用程序**。用户数据包协议（User Datagram Protocol）”，简称UDP。
+1. **UDP：将数据包传送到应用程序**。用户数据包协议（User Datagram Protocol）”，简称UDP。
 
 UDP和IP的区别就是，UDP都会有个端口号。每个访问了网络的程序都被绑定了一个端口号。UDP通过端口号就可以将数据包准确的送达到指定的应用程序。所以，我们可以理解为IP将数据包送给指定电脑，UDP通过端口号将数据包发给指定的程序。UDP头，端口号在UDP头内部，然后UDP将原始数据+UDP头合并 = 新的UDP数据包。
 
 为了支持UDP，我们在网络层和上层之间增加了一个传输层。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1721934c7b1477e7.png)
+![20200620200640](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200640.png)
 <center>简化的 UDP 网络四层传输模型</center>
 
 下面的我们来介绍下具体步骤：
@@ -45,7 +45,7 @@ UDP和IP的区别就是，UDP都会有个端口号。每个访问了网络的程
 
 **UDP缺点：UDP 不能保证数据可靠性，但是传输速度却非常快**
 
-3. **TCP：可靠传输**
+1. **TCP：可靠传输**
 
 前面我们了解到了UDP可以高速传输，但是不能保证数据的可靠性。因而我们引入了TCP来帮助UDP传输。
 
@@ -56,7 +56,7 @@ UDP和IP的区别就是，UDP都会有个端口号。每个访问了网络的程
 - TCP和UDP头一样，TCP头包含了目标端口和本机端口，还提供了要为数据排序的序列号，接收端接受后根据序号重排。
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1721939edf16c18f.png)
+![20200620200654](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200654.png)
 <center>简化的 TCP 网络四层传输模型
 </center>
 
@@ -66,7 +66,7 @@ UDP和IP的区别就是，UDP都会有个端口号。每个访问了网络的程
 
 一个完整的 TCP 连接的生命周期包括了“建立连接”“传输数据”和“断开连接”三个阶段。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172193c50a54721c.png)
+![20200620200701](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200701.png)
 <center>一个 TCP 连接的生命周期
 </center>
 

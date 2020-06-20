@@ -1,4 +1,5 @@
 # 11丨this：从JavaScript执行上下文的视角讲清楚
+![20200620203336](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203336.png)
 ```JavaScript
 var bar = {
     myName:"time.geekbang.com",
@@ -55,7 +56,7 @@ printName: function () {
 
 this的地位：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172445fbac55d03a.png)
+![20200620203348](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203348.png)
 <center>执行上下文中的 this</center
 
 this 是和执行上下文绑定的，也就是说每个执行上下文中都有一个 this。this 也只有这三种——全局执行上下文中的 this、函数中的 this 和 eval 中的 this。
@@ -64,7 +65,7 @@ this 是和执行上下文绑定的，也就是说每个执行上下文中都有
 
 在控制台中输入console.log(this)来打印出来全局执行上下文中的 this，最终输出的是 window 对象。所以你可以得出这样一个结论：全局执行上下文中的 this 是指向 window 对象的。这也是 this 和作用域链的唯一交点，作用域链的最底端包含了 window 对象，全局执行上下文中的 this 也是指向 window 对象。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17244678481ee39d.png)
+![20200620203403](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203403.png)
 <center>全局执行上下文中的this</center>
 
 - **函数执行上下文中的 this**
@@ -112,7 +113,7 @@ myObj.showThis()
 
 在这段代码中，我们定义了一个 myObj 对象，该对象是由一个 name 属性和一个 showThis 方法组成的，然后再通过 myObj 对象来调用 showThis 方法。执行这段代码，你可以看到，最终输出的 this 值是指向 myObj 的。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/12.png)
+![20200620203413](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203413.png)
 <center>上面代码执行结果</center>
 
 **使用对象来调用其内部的一个方法，该方法的 this 是指向对象本身的。**
@@ -138,8 +139,7 @@ foo()
 ```
 
 **你会发现现在this指向了window。**
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/2020052516134.png)
-
+![20200620203425](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203425.png)
 <center>执行结果</center>
 
 ***

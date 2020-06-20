@@ -1,6 +1,6 @@
 ## 导航流程：从输入URL到页面展示，这中间发生了什么？
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17222fafbd1d7149-20200525145046385.png)
+![20200620201008](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201008.png)
 <center>从输入 URL 到页面展示完整流程示意图</center>
 
 
@@ -11,6 +11,8 @@
 当用户在地址栏中输入一个查询关键字时，地址栏会判断输入的关键字是搜索内容，还是请求的 URL。
 - 搜索内容，地址栏使用浏览器默认搜索引擎，合成新的带有搜索关键字的URL
 - 输入内容符合URL规则:比图baidu.com,那么地址栏补充https://www.baidu.com 但是在刚加载的时候，标签页会显示之前打开页面的内容，因为需要等待提交文档阶段，那个时候页面内容才会被替换。
+![20200620201048](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201048.png)
+<center>开始加载 URL 浏览器状态</center>
 
 **2.URL请求**
 
@@ -27,7 +29,7 @@ curl -I http://time.geekbang.org/
 ```
 执行上述代码，返回内容如下图
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172232db663f5856-20200525145059198.png)
+![20200620201017](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201017.png)
 <center>响应行返回状态码 301</center>
 
 图中可以看出，极客时间会把HTTP都转换成HTTPS。服务器会返回301或者302，并把响应头的 Location 字段中填上 HTTPS 的地址，这就是告诉了浏览器要重新导航到新的地址上。
@@ -39,7 +41,7 @@ curl -I http://time.geekbang.org/
 curl -I https://time.geekbang.org/
 ```
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722330011bb5e0a.png)
+![20200620201225](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201225.png)
 <center>响应行返回状态码 200</center>
 
 上图为服务器返回的响应头数据。返回的状态码是200，表正常，可以继续处理请求。
@@ -56,7 +58,7 @@ curl -I https://time.geekbang.org/
 ```
 
 返回信息如下图：
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172233596a414e6e.png)
+![20200620201235](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201235.png)
 
 <center>含有 HTML 格式的 Content-Type</center>
 
@@ -74,7 +76,7 @@ curl -I https://res001.geekbang.org/apps/geektime/android/2.3.1/official/geektim
 
 **比如：**
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172233a66f84e817.png)
+![20200620201252](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201252.png)
 <center>多个页面运行在一个渲染进程中</center>
 
 上图：进程 ID 都是 23601
@@ -105,13 +107,13 @@ curl -I https://res001.geekbang.org/apps/geektime/android/2.3.1/official/geektim
 
 **更新内容如下图所示：**
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722347e7741b53c.png)
+![20200620201348](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201348.png)
 <center>导航完成状态</center>
 
 **5. 渲染阶段**
 文档被提交，渲染进程开始页面解析和子资源加载。当 页面生成完成，渲染进程会发送一个消息更给浏览器进程，浏览器接受消息后，会听着i标签图表上的加载动画。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172234a142457406.png)
+![20200620201358](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201358.png)
 <center>渲染结束</center>
 
 所以，我们了解了**从输入 URL 到页面展示，这中间发生了什么？**

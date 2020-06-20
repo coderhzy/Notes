@@ -1,5 +1,5 @@
 # 07 | 变量提升：JavaScript代码是按顺序执行的吗？
-
+![20200620202345](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202345.png)
 我们学过JavaScript当然知道什么是执行上下们，只有理解了 JavaScrip 的执行上下文，你才能更好地理解 JavaScript 语言本身。**比如我们耳熟能详的变量提升、作用域和闭包。**
 
  **我们来看下面这段代码**
@@ -17,7 +17,7 @@ function showName() {
 
 不过事实执行可结果可能不是这样。看下图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172349ec6ad1ff0e.png)
+![20200620202352](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202352.png)
 <center>在声明之前使用函数和变量的执行结果</center>
 
 - 第 1 行输出“函数 showName 被执行”
@@ -35,7 +35,7 @@ function showName() {
 ```
 上面这段代码JavaScript引擎会报错：
 
-![](https://user-gold-cdn.xitu.io/2020/5/21/17234aae4f090f3b?w=1410&h=90&f=png&s=48972)
+![20200620202403](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202403.png)
 <center>使用了未定义的变量——执行报错
 </center>
 
@@ -54,7 +54,7 @@ myname = '极客时间'  // 赋值部分
 ```
 如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17234b4903857360.png)
+![20200620202411](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202411.png)
 <center>如何理解`var myname = '极客时间'`
 </center>
 
@@ -73,7 +73,7 @@ var bar = function(){
 ```
 如图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17234b73811a3d6e.png)
+![20200620202425](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202425.png)
 <center>函数的声明和赋值
 </center>
 
@@ -101,7 +101,7 @@ myname = '极客时间'
 
 清楚点可以看下图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17234cb997cce1ad.png)
+![20200620202432](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202432.png)
 <center>模拟变量提升示意图
 </center>
 
@@ -116,7 +116,7 @@ myname = '极客时间'
 
 执行的流程图：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17234cead2c24938.png)
+![20200620202509](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202509.png)
 <center>JavaScript 的执行流程图
 </center>
 
@@ -140,8 +140,7 @@ myname = '极客时间'
 ```
 
 下面我们就可以把 JavaScript 的执行流程细化，如下图所示：
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17234d0a1ed3e339.png)
-
+![20200620202519](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202519.png)
 <center>JavaScript 执行流程细化图
 </center>
 

@@ -604,7 +604,7 @@ yum install --downloadonly --downloaddir=/tmp <package-name>
 
 **1.vim fist.sh**
 
-![image-20200526084356329](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/20200526084359.png)
+![20200620205134](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620205134.png)
 
 **2.shell执行**
 
@@ -616,13 +616,13 @@ yum install --downloadonly --downloaddir=/tmp <package-name>
 
 
 
-![image-20200526085641491](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/20200526085759.png)
+![20200620205151](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620205151.png)
 
-![image-20200526085823917](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/20200526085824.png)
+![20200620205158](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620205158.png)
 
 # linux的shell脚本
 Shell是一个命令解释器，它的作用是解释执行用户输入的命令及程序等。 用户每输入一条命令，Shell就执行一条。这种从键盘输入命令，就可以立即得到回应的对话方式，称为交互的方式。
-![](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/06/09/15916689025492.jpg)
+![20200620205208](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620205208.png)
 
 
 当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序文件就被称为Shell脚本。 在Shell脚本里内置了很多命令、语句及循环控制，然后将这些命令一次性执行完毕，这种通过文件执行脚本的方式称为非交互的方式。 Shell脚本语言很适合用于处理纯文本型的数据，而Linux系统中几乎所有的配置文件、日志文件，以及绝大对数的启动文件都是纯文本类型的文件。

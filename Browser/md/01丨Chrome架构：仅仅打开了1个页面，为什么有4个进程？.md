@@ -1,7 +1,7 @@
 ## Chrome架构，打开一个界面，开始四个进程
-
+![20200620200347](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200347.png)
 学习浏览器的多进程架构很有必要。Chrome是很有代表性。
-        ![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172139155897d0a9.png)
+        ![20200620200408](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200408.png)
 上图展示出，Chrome打开了一个网页，但是出现了四个进程。那么为什么呢？
 
 ### 进程和线程
@@ -28,7 +28,7 @@ c = 12 * 12;
 也就是说，当你启动一个程序的时候，操作系统会为该进程创建一块内存，用来存放代码、运行中代码和一个执行任务的主线程，这个运行环境叫进程。
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172139a3b64eff19.png)
+![20200620200424](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200424.png)
 <center>单线程和多线程对比图</center>
 
 线程是依赖进程的，而进程中使用多线程并行处理可以提升运行效率。
@@ -43,21 +43,21 @@ c = 12 * 12;
 这个时候计算b的时候，分母是0，那么当线程执行的时候，线程会执行出错，导致整个进程崩溃，因此其他的两个执行结果也没有了。
 
 2. 线程和进程之前共享数据。
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/172139ee47468f95-20200525133950509.png)
+![20200620200439](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200439.png)
 <center>线程和进程数据共享示意图</center>
 
 上图可以看出，线程 1、线程 2、线程 3 分别把执行的结果写入 A、B、C 中，然后线程 2 继续从 A、B、C 中读取数据，用来显示执行结果。
 
-3. 当一个进程关闭，操作系统会回收占用的内存。当一个进程关闭后，操作系统会回收这个进程申请的所有资源。即使会出现任意线程因为操作不当导致内存泄漏，当进程被关闭，这些内存也会被正常回收。这里举个例子：插件很容易导致内存泄漏。
+1. 当一个进程关闭，操作系统会回收占用的内存。当一个进程关闭后，操作系统会回收这个进程申请的所有资源。即使会出现任意线程因为操作不当导致内存泄漏，当进程被关闭，这些内存也会被正常回收。这里举个例子：插件很容易导致内存泄漏。
 
-4. 进程之间内容相互隔离。
+2. 进程之间内容相互隔离。
 进程之间运行都是相互隔离，本进程只能访问自己占有的数据。如果向在进程中进行数据通信，那么需要使用进程间通信（IPC）机制。
 
 ### 单进程浏览器时代
 
 单进程浏览器是指浏览器的所有功能模块都是运行在同一个进程。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17213a5a06314e4a-20200525134018066.png)
+![20200620200457](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200457.png)
 <center>单进程浏览器架构示意图</center>
 
 - **问题一：不稳定**
@@ -87,7 +87,7 @@ imp();
 ### 多进程浏览器
 #### 早期的进程架构
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17213ad77e274672.png)
+![20200620200509](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200509.png)
 <center>早期 Chrome 进程架构图</center>
 
 根据上图我们可以很清楚的看出，插件进程和渲染进程被单独处理，每个进程都是相互隔离的。即使插件或者渲染进程出现崩溃，那也只会导致这个模块崩溃，不会导致整个浏览器的界面的崩溃。
@@ -110,7 +110,7 @@ JavaScript是运行在渲染进程中，即使JavaScript代码阻塞了渲染进
 
 ### 目前的多系统架构
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17213c5403944502.png)
+![20200620200520](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200520.png)
 <center>最新的 Chrome 进程架构图</center>
 
 - **浏览器进程**。主要负责界面显示、用户交互、子进程管理，同时提供存储等功能。
@@ -136,7 +136,7 @@ JavaScript是运行在渲染进程中，即使JavaScript代码阻塞了渲染进
 2016年，Chrome提出了“面向服务的架构”（Services Oriented Architecture，简称SOA）的思想设计了新的 Chrome 架构。Chrome 整体架构会朝向现代操作系统所采用的“面向服务的架构” 方向发展，原来的各种模块会被重构成独立的服务（Service），每个服务（Service）都可以在独立的进程中运行，访问服务（Service）必须使用定义好的接口，通过 IPC 来通信，从而构建一个更内聚、松耦合、易于维护和扩展的系统，更好实现 Chrome 简单、稳定、高速、安全的目标。
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17213d1416bdd414.png)
+![20200620200539](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200539.png)
 <center>Chrome“面向服务的架构”进程模型图</center>
 
 
@@ -144,7 +144,7 @@ JavaScript是运行在渲染进程中，即使JavaScript代码阻塞了渲染进
 
 谷歌提供灵活的弹性架构，在强大的设备上会以多进程地方方式运行基础服务，但是资源不够的设备商，Chrome将会把多个服务都整合到同一个进程中，从而达到节省内存占用。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/17213d424a2ea485.png)
+![20200620200546](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620200546.png)
 
 <center>在资源不足的设备上，将服务合并到浏览器进程中</center>
 

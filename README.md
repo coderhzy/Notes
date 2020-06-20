@@ -4,28 +4,11 @@
 
 ## 检索
 ***
-### [algorithm]()
-### [Browser]()
-### [CSS3]()
-### [JQuery]()
-### [Linux]()
-### [suibi]()
-### [Vue]()
+### [algorithm](https://github.com/hzy1257664828/Notes/tree/master/algorithm)
+### [Browser](https://github.com/hzy1257664828/Notes/tree/master/Browser)
+### [CSS3](https://github.com/hzy1257664828/Notes/tree/master/Css3)
+### [JQuery](https://github.com/hzy1257664828/Notes/tree/master/JQuery)
+### [Linux](https://github.com/hzy1257664828/Notes/tree/master/Linux)
+### [suibi](https://github.com/hzy1257664828/Notes/tree/master/suibi)
+### [Vue](https://github.com/hzy1257664828/Notes/tree/master/Vue)
 ***
-
-
-
-## algorithm 
-[回到顶部](#Notes)
-1. [00-数组递归遍历]()
-2. [01-链表遍历]()
-3. [02-链表递归遍历]()
-4. [03-链表逆置]()
-5. [04-数组排序]()
-6. [05-冒泡排序]()
-7. [06-选择排序]()
-8. [07-快速排序]()
-9. [08-标准快递排序]()
-
-## Browser
-1. 

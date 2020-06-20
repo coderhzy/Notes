@@ -1,7 +1,7 @@
 # 06渲染流程（下），HTML、CSS和JavaScript，是如何变成页面的？
 
 **今天我们深入来探究一下DOM 生成、样式计算和布局**
-
+![20200620201750](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201750.png)
 
 ## 分层
 
@@ -11,20 +11,20 @@
 
 想要查看涂层（分页状态），打开 Chrome 的“开发者工具”，选择“Layers”标签，就可以可视化页面的分层情况。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d4c2e46aab63.png)
+![20200620201825](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201825.png)
 <center>渲染引擎给页面多图层示意图</center>
 
 **从上图我们可以看出**：渲染引擎给页面分了很多图层，这些图层按照一定顺序叠加在一起，就形成了最终的页面。
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d5041d0911f5-20200525153055495.png)
+![20200620201914](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201914.png)
 <center>图层叠加的最终展示页面</center>
 
 
 
 浏览器的页面实际上被分成了很多图层，这些图层叠加后合成了最终的页面。下面我们再来看看这些图层和布局树节点之间的关系，如图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d51079268ed7-20200525153123432.png)
+![20200620201923](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201923.png)
 <center>布局树和图层树关系示意图</center>
 
 **上图我们可以看出**：不是说布局树的每个节点都会包含一个图层都，如果一个节点没有对应的图层，那么他就属于他父节点的图层。
@@ -34,7 +34,7 @@
 
 1. 拥有层叠上下文属性的元素会被提升为单独的一层。
 - 页面是个二维平面，但是层叠上下文能够让 HTML 元素具有三维概念，这些 HTML 元素按照自身属性的优先级分布在垂直于这个二维平面的 z 轴上。
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d573649d20c8.png)
+![20200620201930](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201930.png)
 <center>层叠上下文示意图</center>
 
 [层叠上下文](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
@@ -42,7 +42,7 @@
 从图中可以看出，明确定位属性的元素、定义透明属性的元素、使用 CSS 滤镜的元素等，都拥有层叠上下文属性。
 
 
-2. 需要剪裁（clip）的地方也会被创建为图层。
+1. 需要剪裁（clip）的地方也会被创建为图层。
 
 **那么什么是剪裁呢？**
 
@@ -68,13 +68,13 @@
 
  下图是运行结果：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d5c5f4583f3d.png)
+![20200620201943](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201943.png)
 <center>剪裁执行结果</center>
 
 如果出现了剪裁的情况，渲染引擎会给文字部分单独常见一个层，如果出现了滚动条，那么滚动条也会被提升成单独的一个层。如图：
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d5de0a1adc83.png)
+![20200620201952](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620201952.png)
 <center>被裁剪的内容会出现在单独一层</center>
 
 **总结**：
@@ -87,7 +87,7 @@
 
 渲染引擎会把一个图层拆分成很多小的绘制指令，然后把这些指令按照顺序组成一个等待绘制的列表，如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d67554d20df2.png)
+![20200620202000](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202000.png)
 <center>绘制列表</center>
 
 **我们从图中可以看出**：绘制列表中的指令是非常简单的，就是执行列表。比如绘制粉色矩形或者黑色的线等。而绘制一个元素通常需要好几条绘制指令，因为每个元素的背景、前景、边框都需要单独的指令去绘制。所以在图层绘制阶段，输出的内容就是这些待绘制列表。
@@ -95,7 +95,7 @@
 如果你想在Chrome中查看，打开“开发者工具”的“Layers”标签，选择“document”层，来实际体验下绘制列表。如下图所示：
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d6a774173447.png)
+![20200620202005](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202005.png)
 <center>一个图层的绘制列表
 </center>
 
@@ -104,16 +104,16 @@
 ## 栅格化（raster）操作
 绘制列表只是用来记录绘制顺序和绘制指令的列表，而实际上绘制操作是由渲染引擎中的合成线程来完成的。你可以结合下图来看下渲染主线程和合成线程之间的关系：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d6de80360bb7.png)
+![20200620202011](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202011.png)
 <center>渲染进程中的合成线程和主线程
 </center>
 
 **如上图所示：**
 当图层的绘制列表准备好之后，主线程会把该绘制列表提交（commit）给合成线程。那么接下来合成线程怎么工作呢？
 
-<font color=red>视口</font>
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d714abcb1d23.png)
 
+<font color=red>视口</font>
+![20200620202028](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202028.png)
 <center>视口
 </center>
 
@@ -125,20 +125,19 @@
 
 **基于这个原因，合成线程会将图层划分为图块（tile）。**，这些图块的大小通常是 256x256 或者 512x512，如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d8a9d82d19e0.png)
-<center>图层被划分为图块示意图
+![20200620202052](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202052.png)
 </center>
 
 合成线程会按照视口附近的图块来优先生成位图，实际生成位图的操作是由栅格化来执行的。所谓栅格化，是指将图块转换为位图。而图块是栅格化执行的最小单位。渲染进程维护了一个栅格化的线程池，所有的图块栅格化都是在线程池内执行的，运行方式如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d8f2dbd8250a-20200525153417966.png)
+![20200620202124](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202124.png)
 <center>合成线程提交图块给栅格化线程池
 </center>
 
 通常姗格化是用GPU来加速生成的，使用来GPU生成的位图的过程叫做快速姗格化，或者 GPU 栅格化，生成的位图被保存在 GPU 内存中。
 
 GPU 操作是运行在 GPU 进程中，如果栅格化操作使用了 GPU，那么最终生成位图的操作是在 GPU 中完成的，这就涉及到了跨进程操作。如下图：
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d94903fca470.png)
+![20200620202131](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202131.png)
 
 <center>GPU 栅格化
 </center>
@@ -154,7 +153,7 @@ GPU 操作是运行在 GPU 进程中，如果栅格化操作使用了 GPU，那�
 ## <font color=blue>渲染流水线大总结</font>
 
 整个渲染流程，从 HTML 到 DOM、样式计算、布局、图层、绘制、光栅化、合成和显示。
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722d98fad75eb1e.png)
+![20200620202147](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202147.png)
 
 <center>完整的渲染流水线示意图
 </center>
@@ -178,28 +177,29 @@ GPU 操作是运行在 GPU 进程中，如果栅格化操作使用了 GPU，那�
 
 如下图:
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722da35b81bb137.png)
+![20200620202208](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202208.png)
+<center>更新元素的几何属性</center>
 
 通过 JavaScript 或者 CSS 修改元素的几何位置属性.改变元素的宽度、高度等，那么浏览器会触发重新布局，解析之后的一系列子阶段，这个过程就叫重排。<font color=blue>重排需要更新完整的渲染流水线，所以开销也是最大的。</font>
 
-2. 更新元素的绘制属性（重绘）
+1. 更新元素的绘制属性（重绘）
 
 
  JavaScript 更改某些元素的背景颜色。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722da4b5bcbc7c3.png)
+![20200620202243](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202243.png)
 <center>更新元素背景
 </center>
 
 如果修改了元素的背景颜色，那么布局阶段将不会被执行，因为并没有引起几何位置的变换，所以就直接进入了绘制阶段，然后执行之后的一系列子阶段，这个过程就叫重绘。相较于重排操作，重绘省去了布局和分层阶段，所以执行效率会比重排操作要高一些。
 
-3. 直接合成阶段
+1. 直接合成阶段
 **更改一个既不要布局也不要绘制的属性，会发生什么变化呢？**
 ***
 **渲染引擎将跳过布局和绘制，只执行后续的合成操作，我们把这个过程叫做合成。**
 
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1722dad499d3ec34.png)
+![20200620202249](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202249.png)
 <center>避开重排和重绘
 </center>
 

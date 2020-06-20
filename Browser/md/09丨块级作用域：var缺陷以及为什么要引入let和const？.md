@@ -1,5 +1,5 @@
 # 09丨块级作用域：var缺陷以及为什么要引入let和const？
-
+![20200620202911](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202911.png)
 Es6通过引入作用域并配合let、const关键词来避开JavaScript存在变量提升的问题。
 
 ## 作用域（scope）
@@ -67,7 +67,7 @@ showName()
 
  首先我们执行了showName函数调用时，执行上下文和调用栈。
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723a4323b669b54.png)
+![20200620202926](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620202926.png)
  <center>开始执行 showName 函数时的调用栈
 </center>
 
@@ -120,7 +120,8 @@ function varTest() {
 }
 varTest();
 ```
-
+![20200620203022](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203022.png)
+<center>varTest 函数的执行上下文</center>
 我们从输出结果是都为2，那就说明我们在if{}里面用var定义的变量x影响到了在函数中的变量，这是我们不想看到的。
 
 *那么我们应该怎样来改造代码呢，我们使用let*
@@ -163,7 +164,7 @@ foo()
 
 **第一步是编译并创建执行上下文**
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723a6e9093f14ab.png)
+![20200620203049](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203049.png)
 <center>执行 foo 函数内部作用域块时的执行上下文</center>
 
 - 函数内部通过 var 声明的变量，在编译阶段全都被存放到变量环境里面了。
@@ -174,7 +175,7 @@ foo()
 
 变量环境中 a 的值已经被设置成了 1，词法环境中 b 的值已经被设置成了 2，这时候函数的执行上下文就如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723a75f94476cd3.png)
+![20200620203059](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203059.png)
 <center>执行 foo 函数内部作用域块时的执行上下文</center>
 
 当进入函数的作用域块时，作用域块中通过 let 声明的变量，会被存放在词法环境的一个单独的区域中，这个区域中的变量并不影响作用域块外面的变量.比如在作用域外面声明了变量 b，在该作用域块内部也声明了变量 b，当执行到作用域内部时，它们都是独立的存在。
@@ -185,12 +186,12 @@ foo()
 
 **清楚查找课程看下图**
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723a7e61fd75bae.png)
+![20200620203108](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203108.png)
 <center>变量查找过程</center>
 
 **当作用域块执行结束之后，其内部定义的变量就会从词法环境的栈顶弹出，最终执行上下文如下图所示：**
 
-![](https://cdn.jsdelivr.net/gh/hzy1257664828/Images/img/1723a7f21e375804.png)
+![20200620203114](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200620203114.png)
 <center>作用域执行完成示意图
 </center>
 
