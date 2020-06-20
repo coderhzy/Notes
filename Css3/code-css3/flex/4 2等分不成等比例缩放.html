@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .wrapper{
+            resize: both;
+            overflow: hidden;
+            width: 400px;
+            height: 200px;
+            border: 1px solid black;
+            display: flex;
+        }
+
+        .content{
+            flex: 1 1 auto;
+            border: 1px solid green;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .content:nth-of-type(2){
+            flex: 0 0 200px;
+        }
+
+        .content:nth-of-type(3){
+            flex: 2 2 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中css动画效果原理</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+
+        .v-enter-active{
+            transform-origin: left center;
+            animation: bounce-in 1s;
+        }
+
+        .v-leave-active{
+            transform-origin: left center;
+            animation: bounce-in 1s reverse;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition
+        name="fade"
+        enter-active-class = "animated swing"
+        leave-active-class = "animated shake"
+    >
+        <div v-if="show">hello world</div>
+    </transition>
+    <button @click="handleBtnClick">切换</button>
+</div>
+
+<script>
+
+    var vm = new Vue({
+        el:"#root",
+        data:{
+            show:false
+        },
+        methods:{
+            handleBtnClick:function () {
+                this.show = !this.show;
+            }
+        }
+    })
+</script>
+</body>
+</html>

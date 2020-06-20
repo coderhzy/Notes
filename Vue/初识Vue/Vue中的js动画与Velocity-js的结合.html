@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的js动画与Velocity-js的结合</title>
+    <script src="vue.js"></script>
+    <script src="velocity.min.js"></script>
+</head>
+<body>
+<div id="root">
+    <transition name="fade"
+                @before-enter="handleBeforeEnter"
+                @enter="handleEnter"
+                @after-enter="handleAfterEnter"
+    >
+        <div v-show="show">hello world</div>
+    </transition>
+    <button @click="handleBtnClick">toggle</button>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: true
+        },
+        methods: {
+            handleBtnClick: function () {
+                this.show = !this.show
+            },
+            handleBeforeEnter: function (el) {
+                // console.log("beforeEnter") //el指的是动画包裹的div
+                el.style.opacity = 0
+            },
+            handleEnter: function (el, done) {
+                Velocity(el, {opacity: 1}, {duration: 1000, complete: done})//调用velocity库来实现
+            },
+            //当before被触发以后，然后触发enter
+            handleAfterEnter: function (el) {
+                alert('动画结束')
+            }
+        }
+    })
+</script>
+</body>
+</html>

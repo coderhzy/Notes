@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中css动画效果原理</title>
+    <script src="vue.js"></script>
+    <style>
+        .v-enter{
+            opacity: 0;
+        }
+        .v-enter-active{
+            transition:opacity 3s;
+        }
+
+        .v-leave-to{
+            opacity: 0;
+        }
+
+        .v-leave-active{
+            transition:opacity 3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <transition>
+            <div v-if="show">hello world</div>
+        </transition>
+        <button @click="handleBtnClick">切换</button>
+    </div>
+
+    <script>
+
+        var vm = new Vue({
+            el:"#root",
+            data:{
+                show:false
+            },
+            methods:{
+                handleBtnClick:function () {
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

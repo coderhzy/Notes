@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中的动画封装</title>
+    <script src="vue.js"></script>
+    <script src="animate.css"></script>
+</head>
+<body>
+<div id="root">
+    <fade :show="show"> <!-- 引用fade包裹 -->
+        <div key="hello">hello world</div>
+        <h1 key="world">hello world</h1>
+    </fade>
+    <button @click="handleBtnClick">toggle</button>
+</div>
+
+<script>
+    Vue.component('fade', { //将方法封装在名为fade的子组件内
+        props: ['show'],
+        template: `
+                <transition-group @before-enter = "handleBeforeEnter"
+                                  @enter = "handleEnter"
+                                  @after-enter= "handleAfterEnter">
+                    <slot v-if="show"></slot>
+                </transition-group>
+            `,
+        methods: {
+            handleBeforeEnter: function (el) {
+                el.style.color = "red"
+            },
+            handleEnter: function (el, done) {
+                setTimeout(() => {
+                    el.style.color = "green"
+                    done()
+                }, 2000)
+            },
+            handleAfterEnter: function (el) {
+                setTimeout(() => {
+                    el.style.color = '#000'
+                }, 3000)
+            }
+        }
+    })
+
+
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: false
+        },
+        methods: {
+            handleBtnClick: function () {
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+</body>
+</html>

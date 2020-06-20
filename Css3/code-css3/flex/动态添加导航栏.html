@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .wrapper{
+            width: 300px;
+            height: 200px;
+            border:1px solid black;
+            display: flex;
+            align-items: center;
+        }
+
+        .item{
+            flex:1 1 auto;  /*瓜分剩余区域*/
+            height: 30px;
+            text-align: center;
+            font-size: 20px;
+            color: #f20;
+        }
+        .item:hover{
+            background-color:#f20;
+            color: #fff;
+        }
+    </style>
+<body>
+    <div class="wrapper">
+        <div class="item">天猫</div>
+        <div class="item">淘宝</div>
+        <div class="item">聚划算</div>
+        <div class="item">京东</div>
+        <div class="item">天猫</div>
+    </div>
+</body>
+</html>

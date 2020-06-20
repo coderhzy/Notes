@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跑马</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            width: 200px;
+            height: 100px;
+            background-image: url(image/horse.png);
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            animation: horserun 1s steps(12,end) infinite;
+        }
+
+        @keyframes horserun {
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -2400px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="horse"></div>
+</body>
+</html>

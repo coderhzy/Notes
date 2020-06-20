@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../echarts.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 600px;height: 400px;" id="ech">
+
+    </div>
+    <script>
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('ech'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '整点温度实况'
+            },
+            legend: {
+                data: ['温度']
+            },
+            xAxis: {
+                type: 'category',
+                data: [6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 2, 4]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [3, 7, 12, 12, 16, 18.33, 15.5, 14.8, 10, 5, 4, 3],
+                type: 'line'
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

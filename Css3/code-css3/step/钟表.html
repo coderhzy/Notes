@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钟表</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+
+        div.clock{
+            position: relative;
+            width: 512px;
+            height: 512px;
+            background-image: url(image/web/512-512px.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+
+        @keyframes secondrun {
+            0%{
+                transform: rotate(180deg);
+            }
+            100%{
+                transform: rotate(540deg);
+            }
+        }
+
+        div.second{
+            left:247px;
+            top: 180px;
+            position: relative;
+            width: 16px;
+            height: 278px;
+            background-image: url(image/web/16-278px.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform-origin: center 76px;
+            transform:rotate(180deg);
+            z-index: 3;
+            animation: secondrun 60s steps(60,end) infinite;
+        }
+
+
+        @keyframes  minuterun{
+            0%{
+                transform: rotate(180deg);
+            }
+            100%{
+                transform: rotate(540deg);
+            }
+        }
+
+
+        div.minute{
+            left:238px;
+            top: 240px;
+            position: absolute;
+            width: 32px;
+            height: 218px;
+            background-image: url(image/web/32-218px.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform-origin: center 15px;
+            transform:rotate(180deg);
+            z-index: 2;
+            animation: minuterun 3600s steps(60,end);
+        }
+
+        div.hour{
+            left:239px;
+            top: 239px;
+            position: absolute;
+            width: 32px;
+            height: 148px;
+            background-image: url(image/web/32-148px.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform-origin: center 15px;
+            transform:rotate(180deg);
+            z-index: 1;
+            animation: minuterun 3643200s steps(12,end);
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="second"></div>
+        <div class="minute"></div>
+        <div class="hour"></div>
+    </div>
+</body>
+</html>

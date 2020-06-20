@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Heloow World</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id = "app">
+    <input type="text" v-model = "inputValue"/>
+    <button v-on:click="handleBtnClick">提交</button>
+    <ul>
+<!--        <li v-for="item in list">{{item}}</li>-->
+        <todo-item v-bind:content="item" v-for="item in list"></todo-item>
+    </ul>
+</div>
+<script>
+
+    // Vue.component("TodoItem",{   //全局组建
+    //     props:['content'],
+    //     template : "<li>{{content}}</li>"
+    // })
+
+    var TodoItem ={           //局部组建
+        props:['content'],
+        template : "<li>{{content}}</li>"
+    }
+
+    var app = new Vue({
+        el:'#app',
+        components:{
+          TodoItem:TodoItem
+        },
+        data:{
+            list:[],
+            inputValue:''
+        },
+        methods:{
+            handleBtnClick:function () {
+                this.list.push(this.inputValue)
+                this.inputValue=""
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

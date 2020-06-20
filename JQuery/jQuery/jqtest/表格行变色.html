@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>表格隔行变色插件</title>
+    <script src="../jquery-1.12.4.js"></script>
+    <script src="../jquery.tableColor.js"></script>
+</head>
+
+<body>
+    <table width="500px" border="1" cellspacing="0">
+        <tr>
+            <th>ID编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+        </tr>
+        <tr>
+            <td>001</td>
+            <td>Tom</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>Jim</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>003</td>
+            <td>Lucy</td>
+            <td>女</td>
+        </tr>
+        <tr>
+            <td>004</td>
+            <td>Lily</td>
+            <td>女</td>
+        </tr>
+    </table>
+    <br>
+    <button id="btn1">传统方式</button>
+    <button id="btn2">插件方式</button>
+    <script>
+        $('#btn1').click(function () {
+            var table = $('table');
+            // 设置偶数行样式
+            table.find('tr:even').css({
+                background: 'lightBlue',
+                color: 'red'
+            });
+            // 设置标题行样式
+            table.find('tr:first').css({
+                background: 'green',
+                color: '#fff'
+            });
+        });
+        $('#btn2').click(function () {
+            $('table').tableColor({
+                'tr:even':{background:"lightBlue",color:'red'},
+                'tr:first':{background:'green',color:'#fff'}
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes change-color {
+            0%{
+                background-color: red;
+            }
+            25%{
+                background-color: green;
+            }
+            50%{
+                background-color: blue;
+            }
+            75%{
+                background-color: black;
+            }
+            100%{
+                bakcground-color:#fff;
+            }
+        }
+
+
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation:change-color 4s steps(2,end);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            perspective: 800px;
+            perspective-origin: 300px 100px;
+            transform-style: preserve-3d;
+        }
+
+        div{
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+            background-image: url(1.png);
+            background-size:cover;
+            transform:rotateY(0deg);
+            transform-origin: 100px 100px 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

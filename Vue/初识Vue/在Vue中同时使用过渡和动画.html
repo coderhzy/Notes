@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在Vue中同时使用过渡和动画</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+    .v-enter,.v-leave-to{
+    opacity: 0;
+    }
+    .v-enter-active,.v-leave-active{
+    transition: opacity 3s;   /*transition动画*/
+    }
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition
+            :duration="10000"
+            appear
+            enter-active-class = "animated swing v-enter-active"
+            leave-active-class = "animated shake v-leave-active"
+            appear-active-class="animated swing"
+    >
+        <div v-if="show">hello world</div>
+    </transition>
+    <button @click="handleBtnClick">切换</button>
+</div>
+
+<script>
+
+    var vm = new Vue({
+        el:"#root",
+        data:{
+            show:true
+        },
+        methods:{
+            handleBtnClick:function () {
+                this.show = !this.show;
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <style>
+    div{
+        height: 200px;
+        background:black;
+        color: white;
+        cursor: crosshair;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        坐标0,0
+    </div>
+
+    <script>
+        $('div').mousemove(function (event) { 
+            //获取x坐标
+            var x = event.clientX;
+            //获取y坐标
+            var y = event.clientY;
+            $('div').html("坐标"+ x + "," + y)
+         })
+    </script>
+</body>
+</html>

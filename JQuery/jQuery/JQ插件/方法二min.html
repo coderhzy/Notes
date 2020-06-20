@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+<body>
+    <script>
+       $.extend({
+           min:function(a,b){
+               return a < b ? a : b;
+           }
+       });
+
+       //求最小值
+       console.log($.min(1,4));
+
+       //为jQ对象本身添加方法
+       //调用$.方法名字()
+    </script>
+
+</body>
+</html>

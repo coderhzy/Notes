@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+
+<body>
+    <input type="button" id="all" value="全选">
+    <input type="button" id="unall" value="全不选">
+    <input type="button" id="revAll" value="反选">
+    <hr>
+    <input type="checkbox"> HTML <br>
+    <input type="checkbox"> CSS <br>
+    <input type="checkbox"> PHP<br>
+    <input type="checkbox"> MySQL<br>
+    <input type="checkbox"> JavaScript<br>
+    <input type="checkbox"> C/C++ <br>
+    <input type="checkbox"> python <br>
+
+    <script>
+
+        // 插件写法
+        $.fn.extend({
+            all: function () {
+                this.attr('checked', true);
+            },
+            unall: function () {
+                this.attr('checked', false);
+            },
+            revAll:function (){
+                //循环所有的checkbox
+                for(var i = 0;i < this.length;i++){
+                    if(this[i].checked == true){
+                        this[i].checked = false;
+                    }
+                    else{
+                        this[i].checked = true;
+                    }
+                }
+            }
+        });
+
+        $('#all').click(function () {
+            $(':checkbox').all();
+        }); //全选
+
+        $('#unall').click(function () {
+            $(":checkbox").unall();
+        }); //全不选
+
+        $('#revAll').click(function () {
+            $(":checkbox").revAll();
+        }); //反选
+    </script>
+</body>
+
+</html>

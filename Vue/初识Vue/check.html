@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件参数校验与非props特性</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <child content="hel"></child>
+    </div>
+    <script>
+
+        Vue.component('child',{
+            props:{content:{type:String,
+                            // required:true,
+                            // default:'default value',
+                            validator:function (value) {
+                                return(value.length > 5) //要求传入的内容，长度必须大于5
+                            }
+            }
+            },//（非必填，不填则传入default）
+            template:"<div>{{content}}</div>"
+        })
+
+        var vm = new Vue({
+            el:"#root"
+        })
+    </script>
+</body>
+</html>

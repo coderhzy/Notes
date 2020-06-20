@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes change {
+            0% {
+                transform: rotateX(-45deg) rotateY(45deg);
+            }
+
+            100% {
+                transform: rotateX(45deg) rotateY(60deg);
+            }
+        }
+
+        body {
+            perspective: 800px;
+            transform-style: preserve-3d;
+            perspective-origin: 300px 300px;
+        }
+
+        div {
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            width: 200px;
+            height: 266px;
+            background-image: url(1.png);
+            background-size: cover;
+            /* transform-origin: 0 0; */
+            /* animation: change 2s cubic-bezier(.5, 0, .5, 1) infinite alternate; */
+            transform:scale(2,1) rotate(-45deg) scale(2,1);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

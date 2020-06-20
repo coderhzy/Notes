@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+
+    <div id = "box">
+        JQ方法插件
+    </div>
+<body>
+    <script>
+        $.fn.extend({
+            //方法名和方法执行的函数
+            colors:function(color){
+                this.css('background',color);
+            }
+        });
+
+        $('#box').colors('red'); //colors方法自定义
+
+        //语法: $.fn.extend(obj)
+        //      obj:key 是方法名，value 执行的函数
+    </script>
+
+</body>
+</html>

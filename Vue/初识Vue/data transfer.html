@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件的传值</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <counter :count="2" @change="handleChange"></counter>
+        <counter :count="1" @change="handleChange"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+
+        var counter ={
+            props:["count"],
+            data:function(){//重新定义一个新的数据，把之前的count数据复制一份存到number，然后使用number
+                return{
+                    number:this.count,
+                }
+            },
+
+            template:"<div @click='handleClick'>{{number}}</div>",
+            methods:{
+                handleClick:function () {
+                     this.number ++;
+                     this.$emit("change",1)
+
+                }
+            }
+        }
+
+
+        var vm = new Vue({
+            el:"#root",
+            //注册这个局部组件
+            components:{
+                counter:counter
+            },
+            data:{
+                total:3,
+            },
+            methods: {
+                handleChange:function (step) {
+                   this.total += step
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

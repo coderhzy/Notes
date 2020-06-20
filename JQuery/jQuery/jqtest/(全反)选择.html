@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>全选、反选与全不选插件</title>
+    <style>
+        table {
+            width: 400px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            border: 1px solid #aaa;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>操作</th>
+            <th>ID编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>001</td>
+            <td>Tom</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>002</td>
+            <td>Jim</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>003</td>
+            <td>Lucy</td>
+            <td>女</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>004</td>
+            <td>Lily</td>
+            <td>女</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center">
+                <input id="checkAll" type="button" value="全选">
+                <input id="uncheckAll" type="button" value="全不选">
+                <input id="checkInvert" type="button" value="反选">
+            </td>
+        <tr>
+    </table>
+    <script>
+        //封装插件
+        $.fn.extend({
+            checkAll: function () {
+                this.attr('checked', true);
+            },
+            uncheckAll: function () {
+                this.attr('checked', false);
+            },
+            checkInvert: function () {
+                for (var i = 0; i < this.length; i++) {
+                    if (this[i].checked == true) {
+                        this[i].checked = false;
+                    } else {
+                        this[i].checked = true;
+                    }
+                }
+            }
+        });
+
+
+        //全选
+        $('#checkAll').click(function () {
+            $(':checkbox').checkAll();
+        });
+
+        //全不选
+        $('#uncheckAll').click(function () {
+            $(':checkbox').uncheckAll();
+        })
+
+        //反选
+        $('#checkInvert').click(function () {
+            $(':checkbox').checkInvert();
+        })
+    </script>
+</body>
+
+</html>

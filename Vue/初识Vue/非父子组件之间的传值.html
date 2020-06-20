@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子组件之间的传值</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <child content="Dell"></child>
+        <child content="lee"></child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue()
+
+
+        Vue.component('child',{
+            data:function(){
+                return{
+                    selfContent : this.content
+                }
+            },
+            props:{
+                content: String
+            },
+            template:"<div @click='handleClick'>{{selfContent}}</div>",
+            methods:{
+                handleClick:function() {
+                    this.bus.$emit('change', this.selfContent)
+                }
+            },
+            mounted :function () {  //生命周期钩子
+                var this_ = this
+                this.bus.$on('change',function (msg) {
+                    this_.selfContent = msg
+                })
+            }
+        });
+
+        var vm = new Vue({
+            el:"#root",
+        })
+    </script>
+</body>
+</html>

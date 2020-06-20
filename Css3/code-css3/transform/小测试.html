@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /*设置了perspective或者preserve-3d 会被自动加上定位*/
+            perspective: 2000px;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes round {
+            0% {
+                transform: translate(-50%, -50%) rotatey(0);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotatey(360deg);
+            }
+        }
+
+        div.wrapper {
+            position: absolute;
+            left: calc(50%);
+            top: calc(50%);
+            width: 300px;
+            height: 300px;
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            animation: round 10s linear infinite;
+        }
+
+        img {
+            position: absolute;
+            width: 300px;
+        }
+
+        img:nth-of-type(1) {
+            transform: rotateY(45deg) translatez(100px);
+        }
+
+        img:nth-of-type(2) {
+            transform: rotateY(90deg) translatez(200px);
+        }
+
+        img:nth-of-type(3) {
+            transform: rotateY(135deg) translatez(500px);
+        }
+
+        img:nth-of-type(4) {
+            transform: rotateY(180deg) translatez(600px);
+        }
+
+        img:nth-of-type(5) {
+            transform: rotateY(225deg) translatez(500px);
+        }
+
+        img:nth-of-type(6) {
+            transform: rotateY(270deg) translatez(800px);
+        }
+
+        img:nth-of-type(7) {
+            transform: rotateY(315deg) translatez(500px);
+        }
+
+        img:nth-of-type(8) {
+            transform: rotateY(360deg) translatez(300px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="pic1.jpeg" alt="">
+        <img src="pic2.jpeg" alt="">
+        <img src="pic3.jpeg" alt="">
+        <img src="pic4.jpeg" alt="">
+        <img src="pic5.jpeg" alt="">
+        <img src="pic6.jpeg" alt="">
+        <img src="pic7.jpeg" alt="">
+        <img src="pic8.jpeg" alt="">
+    </div>
+
+    <script>
+        // document.body.onmouseover = function (e) {
+        //     this.style.perspectiveOrigin = "" + e.pageX +  "px" + e.pageY + "px";
+        // }
+        //此处js代码作用不上，遗留问题  
+    </script>
+</body>
+
+</html>

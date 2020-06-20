@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>extend()方法的使用</title>
+    <script src="../jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            a: 1,
+            b: 1,
+            c: 1
+        };
+        var obj2 = {
+            b: 2,
+            a: 2
+        };
+        
+        // $.extend(obj1,obj2); // 将obj2的a合并到obj1的a
+        // console.log(obj1.a); // 2
+        // console.log(obj2.a); // 2
+
+        // $.extend(obj1);  // 将obj1合并到$
+        // console.log($.a); // 1
+        // console.log($.b); // 1
+        // console.log($.c); // 1
+
+        //深度复制合并
+        // $.extend(true,obj1,obj2);
+        // console.log(obj1.a);    // 2
+        // console.log(obj1.b);    // 2
+        // console.log(obj1.c);    // 1
+
+        obj2.a=10;  //修改obj2的值不会联动到obj1
+        console.log(obj1.a);    // 2
+        console.log(obj1.b);    // 2
+        console.log(obj1.c);    // 1
+
+        console.log(obj2.a); //10
+
+
+        //注意
+        // $.extend(第一个参数，第二个参数，第三个参数)
+        // 当第一个参数是boolean值的时候，ture有效果，fasle无效果
+        // 当填写第一个参数为boolean时候，默认为true
+
+    </script>
+</body>
+
+</html>

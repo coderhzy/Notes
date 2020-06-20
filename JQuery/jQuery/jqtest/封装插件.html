@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>封装jQuery对象方法的插件</title>
+    <script src="../jquery.js"></script>
+</head>
+
+<body>
+    <div id = "plug">hello</div>
+    <script>
+        //封装一个colors插件，让div背景变红色
+        $.fn.extend({
+            colors:function(color){
+                this.css("background",color);
+            },
+        });
+
+        $('#plug').colors("red");
+    </script>
+</body>
+
+</html>
