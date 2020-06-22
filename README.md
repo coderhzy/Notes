@@ -2,6 +2,8 @@
 # Notes
 前端学习之路
 
+**2020年6月21日，修正维护。**
+
 ## 检索
 ***
 ### [algorithm](https://github.com/hzy1257664828/Notes/tree/master/algorithm)
