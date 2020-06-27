@@ -12,6 +12,9 @@
 4. [合并两个有序数组](algorithm/数组/合并两个有序数组/README.md)
 5. [快速排序](algorithm/数组/快速排序/README.md)
 6. [部分排序](algorithm/数组/部分排序/README.md)
+
+## [链表](algorithm/链表)
+1. [移除链表元素](algorithm/链表/移除链表元素/README.md)
 ***
 ### [Browser](https://github.com/hzy1257664828/Notes/tree/master/Browser)
 - [参透浏览器工作原理]()
