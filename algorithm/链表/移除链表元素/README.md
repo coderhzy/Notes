@@ -1,4 +1,4 @@
-## 链表的中间结点
+## 移除链表元素
 [203. 移除链表元素](https://leetcode-cn.com/problems/remove-linked-list-elements/)
 
 ## 描述

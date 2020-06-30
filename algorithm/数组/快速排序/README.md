@@ -1,4 +1,4 @@
-## 链表的中间结点
+## 排序数组
 [912. 排序数组](https://leetcode-cn.com/problems/sort-an-array/)
 
 ## 描述

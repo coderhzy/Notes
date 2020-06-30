@@ -1,4 +1,4 @@
-## 链表的中间结点
+## 相交链表
 [160. 相交链表](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)
 
 ## 描述

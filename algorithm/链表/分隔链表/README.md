@@ -1,4 +1,4 @@
-## 链表的中间结点
+## 分隔链表
 [86. 分隔链表](https://leetcode-cn.com/problems/partition-list/)
 
 ## 描述
