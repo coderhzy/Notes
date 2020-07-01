@@ -24,15 +24,23 @@ var isPalindrome = function(head) {
     let rHead = reverseList(mid.next);
     // 左边头节点
     let lHead = head;
+    // 存下初始rOldHead值
+    let rOldHead = rHead;
 
     // 判断是否是回文链表
+    let result = true;
     while (rHead != null) {
-        if (lHead.val != rHead.val) return false;
+        if (lHead.val != rHead.val) {
+            result = false;
+            break;
+        }
         lHead = lHead.next;
         rHead = rHead.next;
     }
 
-    return false;
+    // 恢复后半部分（对右半部分再次反转）,让数组复原
+    reverseList(rOldHead);
+    return result;
 
 
     function middleNode(head) {

@@ -13,7 +13,6 @@
 var addTwoNumbers = function(l1, l2) {
     if (l1 == null) return l2;
     if (l2 == null) return l1;
-
     // 虚拟头节点
     let dummyHead = new ListNode(0);
     let last = dummyHead;
