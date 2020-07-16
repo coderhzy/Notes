@@ -4,6 +4,7 @@
  * @return {number[]}
  *
  */
+// TODO: stack maxes
 function maxSlidingWindow(nums, k) {
     if (nums == null || nums.length == 0 | k < 1) return null;
     if (k == 1) return nums;

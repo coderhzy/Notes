@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello world</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">{{content}}</div>
+    <!-- <div>{{content}}</div> -->
+
+    <script>
+        //  原生js
+        // var dom = document.getElementById('app');
+        // setTimeout(() => {
+        //     dom.innerHTML = "Hello World";
+        // }, 2000);
+
+
+        //Vue
+        // 1. 创建vue实例
+        // 2. 实例接受配置项，el指的是实例负责管理的区域
+        var app = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello world'
+            }
+        });
+
+        // Vue更改数据，视图更新
+        setTimeout(() => {
+            app.$data.content = 'bye world'
+        }, 2000);
+    </script>
+</body>
+
+</html>

@@ -11246,7 +11246,7 @@
 
     // OR when it is inside another scoped slot or v-for (the reactivity may be
     // disconnected due to the intermediate scope variable)
-    // #9438, #9506 
+    // #9438, #9506
     // and skip force updating ones that do not actually use scope variables.
     if (!needsForceUpdate) {
       var parent = el.parent;

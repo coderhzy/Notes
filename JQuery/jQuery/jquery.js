@@ -3765,7 +3765,6 @@ jQuery.extend({
 		data_user.remove( elem, name );
 	},
 
-	// TODO: Now that all calls to _data and _removeData have been replaced
 	// with direct calls to data_priv methods, these can be deprecated.
 	_data: function( elem, name, data ) {
 		return data_priv.access( elem, name, data );
