@@ -95,3 +95,20 @@ entry: {
   sub: './src/index.js'
 },
 ```
+
+## sourceMap
+打包以后代码报错，代码映射文件位置的管理。
+
+
+## WebpackDevServer
+```js
+  "scripts": {
+    "watch": "webpack --watch"
+  }
+```
+```js
+  devServer: {
+    contentBase: './dist',
+    open: true
+  },
+```
