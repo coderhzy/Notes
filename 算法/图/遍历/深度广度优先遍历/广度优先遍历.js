@@ -5,7 +5,6 @@
  * 4. 重复第二、第三步，直到队列为空
  */
 
-const gtaph = require('./graph');
 const graph = require('./graph');
 
 const visited = new Set();
