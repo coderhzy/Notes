@@ -2,7 +2,7 @@
 ![20200831224414](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831224414.png)
 ![20200831224446](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831224446.png)
 
-**渲染流水线**
+### 渲染流水线
 由于渲染机制的复杂，渲染模块在执行过程中会被划分成多个子阶段，输入的HTML进过这些子阶段，最后输出像素。这个处理流程叫做渲染流水线。
 ![20200831224744](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831224744.png)
 
@@ -13,13 +13,13 @@
 - 然后每个子阶段有其处理过程；
 - 最终每个子阶段会生成输出内容。
 
-**构建 DOM 树**
+### 构建 DOM 树
 HTML 转换为浏览器能够理解的结构——DOM 树。
 ![20200831225046](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831225046.png)
 构建DOM树过程：
 ![20200831225122](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831225122.png)
 
-**样式计算**
+### 样式计算
 1. 把 CSS 转换为浏览器能够理解的结构
 当渲染引擎接收到 CSS 文本时，会执行一个转换操作，将 CSS 文本转换为浏览器可以理解的结构——styleSheets。
 ![20200831225248](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831225248.png)
@@ -31,7 +31,7 @@ HTML 转换为浏览器能够理解的结构——DOM 树。
 ![20200831225508](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200831225508.png)
 <font color="blue">层叠</font>是 CSS 的一个基本特征，它是一个定义了如何合并来自多个源的属性值的算法。它在 CSS 处于核心地位，CSS 的全称“层叠样式表”正是强调了这一点。最终保存在ComputedStyle中。
 
-**布局阶段**
+### 布局阶段
 1. 创建布局树
 - 遍历 DOM 树中的所有可见节点，并把这些节点加到布局树中；
 - 而不可见的节点会被布局树忽略掉，如 head 标签下面的全部内容，再比如 body.p.span 这个元素，因为它的属性包含 dispaly:none，所以这个元素也没有被包进布局树。
