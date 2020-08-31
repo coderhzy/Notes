@@ -90,6 +90,7 @@
 3. 结合DOM树和CSSOM树，生成一棵渲染树(Render Tree)
 4. 生成布局（flow），即将所有渲染树的所有节点进行平面合成
 5. 将布局绘制（paint）在屏幕上
+6. 通过虚拟dom层计算出操作总得差异，一起提交给浏览器
 ![20200901065433](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200901065433.png)
 
 **渲染**
