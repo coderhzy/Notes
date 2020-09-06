@@ -1,3 +1,4 @@
+[toc]
 # Vue
 ## Vue使用
 - 基本使用~组件使用 -必须会
@@ -9,7 +10,7 @@
 2. 指令、动态属性
 3. V-html：会有xss风险，会覆盖子组件
 ### computed和watch
-1. computed有缓存，data不变则不会重新计算
+1. computed有缓存，data不变则不会重新计算ß
 2. watch如何深度监听 — deep:true
 3. watch监听引用类型需要深度监听，拿不到oldVal
 ### class和style
@@ -491,6 +492,10 @@
    - 数据驱动视图（MVVM，setState）
    - 传统个组件，只是静态渲染，更新还要依赖DOM更新
    - 画图VUE的MVVM数据驱动的视图
+### MVVM
+MVVM是Model-View-ViewModel
+![20200901225951](https://hzy-1301560453.cos.ap-shanghai.myqcloud.com/2020/pictures/20200901225951.png)
+[mvvm原理](https://yq.aliyun.com/articles/610059)
 ### Vue响应式
 1. 组件data的数据一旦变化，立刻触发视图的更新
     - 核心API -Object.defineProperty
