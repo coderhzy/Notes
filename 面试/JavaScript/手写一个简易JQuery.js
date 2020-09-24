@@ -50,7 +50,3 @@ class myJQuery extends JQuery {
 // $p.get(1);
 // $p.each((elem) => console.log(elem.nodeName));
 // $p.on('click', () => alert('clicked'));
-
-
-const a = 75*140+3*245+7*1130+1*370+5*370+12*620+199*12+191*12+192*1+197*2;
-console.log(a);
