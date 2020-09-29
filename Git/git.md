@@ -1,0 +1,63 @@
+## 什么是Git
+分布式版本控制。存储代码每个阶段的快照，本地和远端都有完整的仓库，方便开发和管理。
+## Git的基本操作
+- 安装
+- git version
+- git config —-global user.name “hzy”
+- git config —-global user.email “hzy1257664828@gamil.com”
+- cat ~/.gitconfig
+- mkdir hello && cd hello
+- git init
+- touch Readme.md
+- git status.   // 查看仓库状态
+- git add Readme.md
+- git status  
+- git rm —-cached Readme.md
+- git add -A
+- git status
+- 隐藏文件index中可以看到git存储的文件
+- git commit -m “add Readme.md” //提交到本地仓库
+- 在github上创建仓库
+- git remote -v 
+- git push origin master
+- git push -u origin master 
+- ssh免密校验
+- git clone github仓库连接 hello-demo
+- git pull
+- git branch hello1
+- git checkout hello1
+- git checkout -b hello2 //创建并切换分支
+- git branch -d hello2
+- git branch -D hello2 // 强制删除
+- git merge hello2
+- git push origin master
+- git push origin hello1
+- git push origin hello2
+- git push origin :hello1 //删除远端分支
+- git push origin hello1:f1 // 本地上传远端分支时名称自定义
+- git log
+- git log --oneline
+- git log --oneline -3
+- git show 哈希值
+- vim ~/.gitconfig
+- dog --all --decorte --oneline --graph  // 用“A Dog来记忆”
+- git merge BranchName
+- git mergetool
+- 分支冲突，当然在f1基础上创建了一个f2，这个时候我们修改了f1和f2中同一个文件，commit以后，在f2  merge f1的时候会发生冲突
+- touch .gitignore
+- 当fork一个之前仓库，现在那个仓库更新了，我们已经怎样同步呢
+- git remote -v 
+- git remote add upstream 新的仓库链接 
+- git fetch upstream branchName // 不加分支默认master，fetch是将远程分支拉倒本地 pull = fetch + merge 用fetch来同步上游仓库
+- git branch -r //查看远程分支
+- git rebase upstream/master
+- git push
+**回滚**
+- git reset master^ // ^代表上一次 两次^^，可用~2代替
+- git dog
+- git reset 哈希值
+- git rest --hard 哈希值  // 消除以前的所有
+- git rest --soft 哈希值 // 只更改Head指针
+- git reflog
+
+- git reverst 哈希值 // 会生成新的commit并且提交
